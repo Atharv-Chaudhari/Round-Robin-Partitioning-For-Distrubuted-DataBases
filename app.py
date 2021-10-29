@@ -8,31 +8,31 @@ import logging
 app = Flask(__name__)
 
 mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="iris"
+    host="remotemysql.com",
+    user="Sni3fRlWcx",
+    password="vwRjyIQ4WE",
+    database="Sni3fRlWcx"
 )
 
 
 @app.route('/')
 def database():
     mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="iris"
+        host="remotemysql.com",
+        user="Sni3fRlWcx",
+        password="vwRjyIQ4WE",
+        database="Sni3fRlWcx"
     )
     mydb2 = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
+        host="remotemysql.com",
+        user="4NaN7QJzov ",
+        password="epsIAkXHKE",
+        database="4NaN7QJzov"
     )
     mycursor2 = mydb2.cursor()
-    mycursor2.execute("DROP DATABASE IF EXISTS temp1")
-    mycursor2.execute("CREATE DATABASE temp1")
+    mycursor2.execute("""SELECT CONCAT('DROP TABLE IF EXISTS ', TABLE_NAME, ';') FROM INFORMATION_SCHEMA.tables WHERE TABLE_SCHEMA = '4NaN7QJzov'""")
     mycursor = mydb.cursor()
-    tables_names = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='iris'"
+    tables_names = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='Sni3fRlWcx'"
     mycursor.execute(tables_names)
     tables = mycursor.fetchall()
     myresult = []
@@ -51,21 +51,21 @@ def database():
 @app.route('/partition', methods=['POST', 'GET'])
 def partition():
     mydb1 = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="temp1"
+        host="remotemysql.com",
+        user="4NaN7QJzov ",
+        password="epsIAkXHKE",
+        database="4NaN7QJzov"
     )
     mycursor1 = mydb1.cursor()
     print(mycursor1)
     mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="iris"
+        host="remotemysql.com",
+        user="Sni3fRlWcx",
+        password="vwRjyIQ4WE",
+        database="Sni3fRlWcx"
     )
     mycursor = mydb.cursor()
-    tables_names = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='iris'"
+    tables_names = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='Sni3fRlWcx'"
     mycursor.execute(tables_names)
     tables = mycursor.fetchall()
     myresult = []
@@ -94,7 +94,7 @@ def partition():
         mycursor1.execute("INSERT INTO `partition_"+str(((i) % z)) +
                           "` VALUES ('"+str("','".join(myresult[0][i-1]))+"')")
     mydb1.commit()
-    tables_names1 = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='temp1'"
+    tables_names1 = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='4NaN7QJzov'"
     mycursor1.execute(tables_names1)
     tables1 = mycursor1.fetchall()
     myresult1 = []
@@ -112,10 +112,10 @@ def partition():
 @app.route('/point_search', methods=['POST', 'GET'])
 def point_search():
     mydb1 = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="temp1"
+        host="remotemysql.com",
+        user="4NaN7QJzov ",
+        password="epsIAkXHKE",
+        database="4NaN7QJzov"
     )
     mycursor1 = mydb1.cursor()
     mycursor1.execute("show tables")
@@ -136,10 +136,10 @@ def point_search():
 @app.route('/range_search', methods=['POST', 'GET'])
 def range_search():
     mydb1 = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="temp1"
+        hhost="remotemysql.com",
+        user="4NaN7QJzov ",
+        password="epsIAkXHKE",
+        database="4NaN7QJzov"
     )
     mycursor1 = mydb1.cursor()
     mycursor1.execute("show tables")
@@ -162,10 +162,10 @@ def range_search():
 @app.route('/all_scan_search', methods=['POST', 'GET'])
 def all_scan_search():
     mydb1 = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="temp1"
+        host="remotemysql.com",
+        user="4NaN7QJzov ",
+        password="epsIAkXHKE",
+        database="4NaN7QJzov"
     )
     mycursor1 = mydb1.cursor()
     mycursor1.execute("show tables")
