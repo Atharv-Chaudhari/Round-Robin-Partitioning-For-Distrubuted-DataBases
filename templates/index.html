@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="static/db_round_robin.svg">
+    <title>Round Robin partitioning</title>
+</head>
+
+<body>
+    <div class="half-1">
+        {% if n!=0 %}
+        <h1 style="text-align: center;color:#0000CD;">Current Database Structure</h1>
+        <div class="part">
+            <a href="/partition"><input type="submit" value="Round Robin Partitions"></a>
+        </div>
+        {% endif %}
+        {% for k in range(n) %}
+        <h2 style="text-align: center;color:red;">{{table[k][0]}}</h2>
+        <table style="max-width:70%;text-align:center;margin-left: auto;margin-right: auto;">
+            <tr>
+                {% for j in column[k] %}
+                <th style="text-align: center;">{{j[0]}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in data[k] %}
+            <tr>
+                {% for x in i %}
+                <td style="text-align: center;">{{x}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tr>
+        </table>
+        {% endfor %}
+        <br>
+    </div>
+    <div class="half-2">
+        {% if n1!=0 %}
+        <h1 style="text-align:center;color:#0000CD;">Round Robin Partitions</h1>
+        <div class="part">
+            <a href="/partition"><input type="submit" value="Round Robin Partitions"></a>
+        </div>
+        {% endif %}
+        {% for k in range(n1) %}
+        <h2 style="text-align: center;color:red;">{{table1[k][0]}}</h2>
+        <table style="max-width:70%;text-align:center;margin-left: auto;margin-right: auto;">
+            <tr>
+                {% for j in column1[k] %}
+                <th style="text-align: center;">{{j[0]}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in data1[k] %}
+            <tr>
+                {% for x in i %}
+                <td style="text-align: center;">{{x}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tr>
+        </table>
+        {% endfor %}
+        <br>
+        {% if n1!=0 %}
+        {% endif %}
+        {% if n1!=0 %}
+        <div style="padding-left:15%;">
+            <a href="/point_search">
+                <button class="button button2">
+                    Point Query
+                </button>
+            </a>
+            <span style="padding-left:20%;"><a href="/range_search">
+                    <button class="button button2">Range Query</button>
+                </a></span>
+            <span style="padding-left:20%;"><a href="/all_scan_search">
+                    <button class="button button2">
+                        All Scan Query
+                    </button></span>
+            </a>
+        </div>
+        {% endif %}
+        <br>
+        {% if f!=0 %}
+        <h2 style="text-align: center;color:red;">{{method}}</h2>
+        <br>
+        <table style="max-width:70%;text-align:center;margin-left: auto;margin-right: auto;">
+            <tr>
+                {% for j in cols %}
+                <th style="text-align: center;">{{j[0]}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in data2 %}
+            <tr>
+                {% for x in i %}
+                <td style="text-align: center;">{{x}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tr>
+        </table>
+        <br>
+        <div style="text-align:center;">
+            <a href="/partition">
+                <button class="button button2">
+                    Go Back
+                </button>
+            </a>
+        </div>
+        {% endif %}
+        <br>
+        <div style="text-align:center;">
+            <a href="/">
+                <button class="button button2">
+                    Home
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

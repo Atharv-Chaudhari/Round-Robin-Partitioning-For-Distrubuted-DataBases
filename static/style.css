@@ -1,0 +1,100 @@
+table {
+  border-collapse: collapse;
+  width: 50%;
+  /* margin-left: auto;
+  margin-right: auto; */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+td {
+  border: 1px solid black;
+  text-align: left;
+  padding: 11px;
+  width: 5%;
+  text-align: center;
+}
+
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  background-color: black;
+  color: white;
+  padding: 8px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #ccffff;
+  text-align: center;
+}
+tr:nth-child(odd) {
+  background-color: white;
+  text-align: center;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+input[type = submit] {
+  background-color: white; 
+  border: 2px solid #4CAF50;
+  color: black; 
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+input[type = submit]:hover {
+  background-color: #07ed10;
+  color: white;
+}
+/* .half-1{
+  position: absolute;
+  width:50%;
+  margin-left: 0%;
+}
+.half-2{
+  width:50%;
+  margin-left: 50%;
+}
+*/
+.part{
+  text-align:center;
+} 
+/* body{
+  background-image: url("https://viewfinder.expedia.com/wp-content/uploads/2020/05/Zoom_Slovakia.jpg");
+  background-size: contain, cover;
+  background-size: cover;
+  background-repeat: no-repeat; 
+} */
+body{
+  background: url("https://viewfinder.expedia.com/wp-content/uploads/2020/05/Zoom_Slovakia.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
